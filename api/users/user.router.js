@@ -1,0 +1,20 @@
+const userController = require("./user.controller");
+const customerController = require("./user.controller");
+const router = require("express").Router();
+const { checkToken } = require("../../auth/token_validation");
+
+router.post("/login", userController.loginUser);
+router.post("/createUser", userController.createUser);
+router.get("/fetchUsers", checkToken, userController.fetchAllUser);
+router.get("/fetchUserById", checkToken, userController.fetchUserById);
+router.post("/updateUser", checkToken, userController.updateUser);
+router.post("/fetchUserInformation", userController.fetchUserDetailsById);
+router.post("/updateUserDetailsByID", checkToken, userController.updateUserDetailsByID);
+router.post("/createVideo", checkToken, userController.createVideo);
+router.post("/updateVideo", checkToken, userController.updateVideo);
+router.post("/fetchAllVideos", checkToken, userController.fetchAllVideos);
+router.post("/createPublication", checkToken, userController.createPublication);
+router.get("/fetchAllPublications", checkToken, userController.fetcAllPublications);
+router.post("/createSignal", checkToken, userController.createSignal);
+router.get("/fetchAllSignals", checkToken, userController.fetcAllSignals);
+module.exports = router;
